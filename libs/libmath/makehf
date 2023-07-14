@@ -1,0 +1,34 @@
+#
+# Makefile for Libs
+RESDIR = ../bin/
+CC=../../cproc/cproc
+AS=../../elftools/minias/minias
+LD=../../elftools/neatld/nld
+AR =../../elftools/ar/ar
+CFLAGS = -mrv32 -S -I include -I ../libminlibc/include -D SINGLE_PRECISION
+
+
+
+CSRCS = $(wildcard *.c)
+ASRCS = $(patsubst %.c,%.s,$(CSRCS))
+OSRCS = $(patsubst %.c,%.o,$(CSRCS))
+OBJS = $(addprefix $(RESDIR), $(OSRCS))
+BIN = $(RESDIR)libmathhf.a
+
+.PHONY:		all
+.PRECIOUS: $(RESDIR)%.s
+
+all:		$(BIN)
+
+$(RESDIR)%.s:%.c
+	$(CC) -o $(basename $@).tmp $(CFLAGS) $<
+	cpp -include ../../defs.inc $(basename $@).tmp -o $@
+
+$(RESDIR)%.o:$(RESDIR)%.s
+	$(AS) -o $@ $<
+
+$(BIN):$(OBJS)
+	$(AR) -rcs $@ $^
+	rm -f $(OBJS)
+
+

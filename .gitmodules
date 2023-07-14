@@ -1,0 +1,9 @@
+[submodule "qbe_riscv32_64"]
+	path = qbe_riscv32_64
+	url = https://github.com/michg/qbe_riscv32_64
+[submodule "cproc"]
+	path = cproc
+	url = https://github.com/michg/cproc
+[submodule "elftools_riscv32"]
+	path = elftools
+	url = https://github.com/michg/elftools_riscv32
