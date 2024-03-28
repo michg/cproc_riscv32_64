@@ -5,7 +5,7 @@ LD=../elftools/neatld/nld
 AR = ../elftools/ar/ar
 CFLAGS = -S -I include
 
-LIBS = $(RESDIR)/libmathhf.a $(RESDIR)/libminlibc.a
+LIBS = $(RESDIR)/libmathhf.a $(RESDIR)/libminlibc.a $(RESDIR)/libari64.a
 
 
 .PHONY:		all
@@ -17,6 +17,7 @@ all:$(RESDIR) $(LIBS)
 $(LIBS):
 	make -r -C libmath -f makehf
 	make -r -C libminlibc
+	make -r -C libari64
 
 $(RESDIR):
 	mkdir -p $@

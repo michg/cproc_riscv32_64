@@ -330,7 +330,7 @@ module picorv32_pcpi_div
 	end
 
 	reg [XLEN-1:0] dividend;
-	reg [2*XLEN-1:0] divisor;
+	reg [2*XLEN-2:0] divisor;
 	reg [XLEN-1:0] quotient;
 	reg [XLEN-1:0] quotient_msk;
 	reg running;

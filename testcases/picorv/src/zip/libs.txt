@@ -1,1 +1,1 @@
-../../libs/bin/libminlibc
+../../libs/bin/libminlibc ../../libs/bin/libari64

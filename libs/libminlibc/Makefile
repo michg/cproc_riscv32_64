@@ -38,4 +38,4 @@ $(RESDIR)%.s64:%.c
 	cpp -include ../../defs.inc $(basename $@).t64 -o $@
 
 $(RESDIR)%.o64:$(RESDIR)%.s64
-	$(AS) -o $@ $< 
+	$(AS) -o $@ -m64 $< 

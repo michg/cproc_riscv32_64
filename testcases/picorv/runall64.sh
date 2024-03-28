@@ -22,9 +22,9 @@ for name in src/*/; do
 	cpp -include ../../defs.inc ${RESDIR}/${name}_pre.s -o ${RESDIR}/${name}.s
 	${CC} ${CFLAGS} io.c -o ${RESDIR}/io_pre.s
 	cpp -include ../../defs.inc ${RESDIR}/io_pre.s -o ${RESDIR}/io.s
-	${AS} -o ${RESDIR}/start.o start.s
-	${AS} -o ${RESDIR}/io.o ${RESDIR}/io.s
-	${AS} -o ${RESDIR}/${name}.o ${RESDIR}/${name}.s
+	${AS} -o ${RESDIR}/start.o -m64 start.s
+	${AS} -o ${RESDIR}/io.o -m64 ${RESDIR}/io.s
+	${AS} -o ${RESDIR}/${name}.o -m64 ${RESDIR}/${name}.s
 	${LD} -ns -ne -o ${RESDIR}/${name}.bin ${RESDIR}/start.o ${RESDIR}/io.o ${RESDIR}/${name}.o ${ldopt}
 	python3 mkhex.py ${RESDIR}/${name}
         cp ${RESDIR}/${name}.hex firmware.mem

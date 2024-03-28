@@ -33,7 +33,6 @@ static int skip_atoi(const char **s)
 #define SPECIAL 32              /* 0x */
 #define LARGE   64              /* use 'ABCDEF' instead of 'abcdef' */
 
-//static char * number(char * buf, char * end, long long num, int base, int size, int precision, int type)
 char * number(char * buf, char * end, long long num, int base, int size, int precision, int type)
 {
   char c,sign,tmp[66];
@@ -137,7 +136,7 @@ int vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
 {
   // Written by Rolf 
   int len;
-  unsigned long num;
+ unsigned long long num;
   int i, base;
   char *str, *end, c;
   const char *s;
@@ -355,7 +354,7 @@ repeat:
         continue;
     }
     if (qualifier == 'L')
-      num = va_arg(args, long);
+    num = va_arg(args, long long);
     else if (qualifier == 'l') {
       num = va_arg(args, unsigned long);
       if (flags & SIGN)

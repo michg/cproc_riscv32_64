@@ -28,3 +28,6 @@ void puti(int i)
     putc(10); // Newline!
 }
 
+void puts(char *s) {
+	while(*s) putc(*s++);
+}
