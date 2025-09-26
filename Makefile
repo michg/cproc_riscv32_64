@@ -6,7 +6,7 @@
 
 all:
 		make -C cproc all
-		make -C qbe_riscv32_64 install PREFIX=/usr
+		make -C qbe_riscv32_64
 		make -C elftools
 		make -C libs
 		
